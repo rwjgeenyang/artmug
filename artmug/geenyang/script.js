@@ -1,19 +1,50 @@
-const API_URL =
-"https://script.google.com/macros/s/AKfycbzswPe02rjw2YqT_Uh4eqBUujwEaSYdL7jvb_9WBq-S0vAb9xW4IW4SkkkmdD6eoupG/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzswPe02rjw2YqT_Uh4eqBUujwEaSYdL7jvb_9WBq-S0vAb9xW4IW4SkkkmdD6eoupG/exec";
 
 async function loadData(){
 
     const response = await fetch(API_URL);
-    const data = await response.json();
 
-    document.getElementById("title").textContent = data.title;
+    const items = await response.json();
 
-    document.getElementById("subtitle").textContent = data.subtitle;
+    const app = document.getElementById("app");
 
-    document.getElementById("description").textContent = data.description;
+    app.innerHTML = "";
 
-    document.getElementById("price").textContent =
-        Number(data.price).toLocaleString() + "원";
+    items.forEach(item=>{
+
+        let element;
+
+        switch(item.type){
+
+            case "title":
+
+                element = document.createElement("h1");
+                element.textContent = item.value;
+
+                break;
+
+            case "text":
+
+                element = document.createElement("p");
+                element.textContent = item.value;
+
+                break;
+
+            case "price":
+
+                element = document.createElement("div");
+                element.className="price";
+                element.textContent=
+                    Number(item.value).toLocaleString()+"원";
+
+                break;
+
+        }
+
+        if(element)
+            app.appendChild(element);
+
+    });
 
     resize();
 
@@ -28,5 +59,4 @@ function resize(){
 
 }
 
-window.onload = loadData;
-window.onresize = resize;
+window.onload=loadData;
