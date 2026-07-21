@@ -22,19 +22,19 @@
 </head>
 <body>
 
-안녕하세요
+<div id="app">
 
-<script>
-function resize() {
-  parent.postMessage({
-    type: 'resize',
-    height: document.documentElement.scrollHeight
-  }, '*');
-}
+    <h1 id="title"></h1>
 
-window.onload = resize;
-window.onresize = resize;
-</script>
+    <h3 id="subtitle"></h3>
+
+    <p id="description"></p>
+
+    <div id="price"></div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
