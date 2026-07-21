@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>GeeNyang</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-size: 48px;
+      font-family: sans-serif;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+
+안녕하세요
+
+<script>
+function resize() {
+  parent.postMessage({
+    type: 'resize',
+    height: document.documentElement.scrollHeight
+  }, '*');
+}
+
+window.onload = resize;
+window.onresize = resize;
+</script>
+
+</body>
+</html>
