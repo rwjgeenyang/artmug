@@ -1,1 +1,18 @@
+html,
+body{
+    margin:0;
+    padding:0;
+}
 
+body{
+    background:white;
+    font-family:sans-serif;
+}
+
+#app{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    font-size:48px;
+}
