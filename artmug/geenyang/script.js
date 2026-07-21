@@ -39,6 +39,13 @@ async function loadData(){
 
                 break;
 
+            case "image":
+            
+                element = document.createElement("img");
+                element.src = item.value;
+            
+                break;
+
         }
 
         if(element)
